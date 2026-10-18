@@ -4,6 +4,7 @@ import { toCards, uid } from "../lib/types";
 import { go } from "../lib/router";
 import Importer from "./Importer";
 import CardEditor from "./CardEditor";
+import { ArcBackground, SylvaIntro } from "./ThreeUI";
 
 interface Props {
   decks: Deck[];
@@ -64,8 +65,10 @@ export default function Home({ decks, saveDeck, openSettings }: Props) {
 
   return (
     <>
+      <SylvaIntro />
+      <div className="hero-wrap" id="make">
+      <ArcBackground />
       <section className="hero">
-        <div className="hero-glow" aria-hidden />
         <div className="hero-copy">
           <p className="eyebrow">PDF → flashcards</p>
           <h1>
@@ -94,6 +97,7 @@ export default function Home({ decks, saveDeck, openSettings }: Props) {
           </li>
         </ul>
       </section>
+      </div>
 
       <section className="page">
         <div className="section-head">

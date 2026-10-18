@@ -245,22 +245,73 @@ main {
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
 }
-.hero-glow {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  right: 8%;
-  top: 10%;
-  background: radial-gradient(circle, rgba(143, 199, 154, 0.22), transparent 65%);
-  filter: blur(20px);
-  pointer-events: none;
-  animation: drift 14s ease-in-out infinite alternate;
+/* ThreeUI: Sylva hero (full page in an iframe) */
+.sylva-intro {
+  position: relative;
+  height: clamp(560px, calc(100svh - 90px), 980px);
+  margin: 0 clamp(8px, 1.5vw, 20px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
-@keyframes drift {
-  to {
-    transform: translate(-40px, 30px) scale(1.1);
+.sylva-intro .shader-frame {
+  position: absolute;
+  inset: 0;
+}
+.sylva-intro .shader-frame > * {
+  width: 100%;
+  height: 100%;
+}
+.sylva-cue {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: inline-flex;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  text-decoration: none;
+  font-weight: 400;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
+}
+.sylva-cue:hover {
+  transform: translateY(-2px);
+}
+.sylva-cue span {
+  animation: bob 1.6s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translateY(3px);
   }
 }
+
+/* ThreeUI: Predictive Arc behind the uploader */
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+.arc-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 70%, transparent);
+}
+.arc-bg > * {
+  width: 100%;
+  height: 100%;
+}
+.hero-wrap .hero {
+  z-index: 1;
+}
+
 .hero h1 {
   font-size: clamp(2.4rem, 5.6vw, 3.95rem);
   line-height: 1.05;
